@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYNC VIBE | Cruise Vibe - Amapiano Mix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff5500;
+            --secondary: #ff8c00;
+            --dark-bg: #121212;
+            --light-bg: #1e1e1e;
+            --card-bg: #282828;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B3B3B3;
+            --glow: 0 0 20px rgba(255, 140, 0, 0.7);
+            --wave-color: rgba(255, 140, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap');
+        
+        body {
+            color: var(--text-primary);
+            background-color: var(--dark-bg);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 100px;
+            overflow-x: hidden;
+        }
+        
+        /* Wave Animation Background */
+        .wave-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23ff8c00" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23ff8c00" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23ff8c00"/></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            animation: wave 10s linear infinite;
+        }
+        
+        .wave:nth-child(2) {
+            animation-delay: -5s;
+            animation-duration: 15s;
+            opacity: 0.5;
+        }
+        
+        .wave:nth-child(3) {
+            animation-delay: -2s;
+            animation-duration: 20s;
+            opacity: 0.2;
+        }
+        
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Navigation */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: rgba(0, 0, 0, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--primary);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+        
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-icon {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-icon:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, var(--dark-bg) 70%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+            }
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: rgba(255, 140, 0, 0.2);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            border: 1px solid var(--primary);
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .status-badge::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 140, 0, 0) 0%,
+                rgba(255, 140, 0, 0.1) 50%,
+                rgba(255, 140, 0, 0) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+        
+        /* Music Section */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .mix-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mix-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--glow);
+        }
+        
+        .mix-image-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .mix-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .mix-card:hover .mix-image {
+            transform: scale(1.1);
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .mix-card:hover .play-overlay {
+            opacity: 1;
+        }
+        
+        .play-icon {
+            color: white;
+            font-size: 3rem;
+            background-color: rgba(255, 140, 0, 0.8);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .play-icon:hover {
+            transform: scale(1.1);
+            background-color: rgba(255, 140, 0, 1);
+        }
+        
+        .mix-info {
+            padding: 1.5rem;
+        }
+        
+        .mix-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .mix-artist {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .mix-duration {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .mix-duration i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+        
+        .coming-soon-card {
+            background-color: rgba(30, 30, 30, 0.5);
+            border: 2px dashed var(--secondary);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            min-height: 350px;
+            transition: all 0.3s;
+        }
+        
+        .coming-soon-card:hover {
+            border-color: var(--primary);
+            background-color: rgba(255, 140, 0, 0.05);
+        }
+        
+        .coming-soon-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .coming-soon-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        
+        /* Player Bar */
+        .player-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            background-color: rgba(30, 30, 30, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            border-top: 1px solid rgba(255, 140, 0, 0.2);
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .now-playing {
+            display: flex;
+            align-items: center;
+            width: 25%;
+            min-width: 250px;
+        }
+        
+        .now-playing-cover {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .song-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .song-info .title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .song-info .artist {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .player-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 40%;
+        }
+        
+        .control-buttons {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .control-button {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+            margin: 0 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .control-button:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .play-button-small {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+        }
+        
+        .play-button-small:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.8);
+        }
+        
+        .progress-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .progress-time {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            width: 50px;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            flex-grow: 1;
+            height: 5px;
+            background-color: #535353;
+            border-radius: 3px;
+            margin: 0 15px;
+            cursor: pointer;
+            position: relative;
+            transition: height 0.2s;
+        }
+        
+        .progress-bar:hover {
+            height: 7px;
+        }
+        
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+            position: relative;
+        }
+        
+        .progress-dot {
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: none;
+            box-shadow: 0 0 5px rgba(255, 140, 0, 0.8);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background-color: rgba(0, 0, 0, 0.9);
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+            background-color: rgba(255, 140, 0, 0.1);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .music-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .player-bar {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+            }
+            
+            .now-playing, .player-controls {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .control-buttons {
+                margin-bottom: 5px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1rem;
+                min-height: 50vh;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .music-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+            
+            .mix-image-container {
+                height: 180px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .top-nav {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-icons {
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+            
+            .status-badge {
+                font-size: 0.8rem;
+                padding: 0.6rem 1.5rem;
+            }
+            
+            .coming-soon-card {
+                min-height: 250px;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Wave Animation Background -->
+    <div class="wave-bg">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+    
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="logo">
+            <i class="fas fa-infinity logo-icon"></i>
+            <span>CRUISE VIBE</span>
+        </div>
+        
+        <div class="nav-icons">
+            <a href="#home" class="nav-icon" title="Home"><i class="fas fa-home"></i></a>
+            <a href="#mixes" class="nav-icon" title="Mixes"><i class="fas fa-music"></i></a>
+            <a href="#contact" class="nav-icon" title="Contact"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>AMAPIANO CRUISE</h1>
+            <p>Immerse yourself in the hottest Amapiano mixes from Kabza De Small and more</p>
+            <div class="status-badge">
+                LIVE MIXES • 24/7 VIBES
+            </div>
+        </div>
+    </section>
+    
+    <!-- Mixes Section -->
+    <section class="container" id="mixes">
+        <h2 class="section-title">Amapiano Mixes</h2>
+        <p class="section-subtitle">Curated selection of the hottest Amapiano mixes for your cruise experience</p>
+        
+        <div class="music-grid" id="music-grid">
+            <!-- Mixes will be inserted here by JavaScript -->
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="container" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-subtitle">For bookings, collaborations or just to share the vibe</p>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <p style="margin-bottom: 1rem; font-size: 1.1rem;">Email: <a href="mailto:info@syncvibe.com" style="color: var(--secondary); text-decoration: none;">info@syncvibe.com</a></p>
+            <p style="font-size: 1.1rem;">Phone: +27 12 345 6789</p>
+        </div>
+    </section>
+    
+    <!-- Player Bar -->
+    <div class="player-bar">
+        <div class="now-playing">
+            <img src="" alt="Now Playing" class="now-playing-cover" id="now-playing-cover">
+            <div class="song-info">
+                <div class="title" id="now-playing-title">No mix selected</div>
+                <div class="artist" id="now-playing-artist">SYNC VIBE</div>
+            </div>
+        </div>
+        
+        <div class="player-controls">
+            <div class="control-buttons">
+                <button class="control-button prev">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="control-button play-button-small" id="play-button">
+                    <i class="fas fa-play" id="play-icon"></i>
+                </button>
+                <button class="control-button next">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+            
+            <div class="progress-container">
+                <span class="progress-time" id="current-time">0:00</span>
+                <div class="progress-bar" id="progress-bar">
+                    <div class="progress" id="progress"></div>
+                    <div class="progress-dot" id="progress-dot"></div>
+                </div>
+                <span class="progress-time" id="duration">0:00</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-soundcloud"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2023 SYNC VIBE. All rights reserved. | Cruise Vibe Experience
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Audio player functionality
+            const audio = new Audio();
+            let currentSongIndex = 0;
+            let isPlaying = false;
+            let mixes = [];
+            
+            // Setup mixes data
+            function setupMixes() {
+                mixes = [
+                    {
+                        title: "Kabza De Small - Piano Mix Vol. 1",
+                        artist: "Kabza De Small",
+                        audioUrl: "https://example.com/mixes/kabza-mix1.mp3", // Replace with actual URL
+                        image: "https://i.ytimg.com/vi/example1/maxresdefault.jpg", // Replace with actual image
+                        duration: "1:12:45",
+                        isFeatured: true
+                    },
+                    {
+                        title: "Kabza De Small - Piano Mix Vol. 2",
+                        artist: "Kabza De Small",
+                        audioUrl: "https://example.com/mixes/kabza-mix2.mp3", // Replace with actual URL
+                        image: "https://i.ytimg.com/vi/example2/maxresdefault.jpg", // Replace with actual image
+                        duration: "1:08:30",
+                        isFeatured: true
+                    }
+                ];
+                
+                renderMixes();
+            }
+            
+            // Render mixes to the DOM
+            function renderMixes() {
+                const musicGrid = document.getElementById('music-grid');
+                if (!musicGrid) return;
+                
+                musicGrid.innerHTML = '';
+                
+                // Render available mixes
+                mixes.forEach((mix, index) => {
+                    const mixCard = document.createElement('div');
+                    mixCard.className = 'mix-card';
+                    mixCard.innerHTML = `
+                        <div class="mix-image-container">
+                            <img src="${mix.image}" alt="${mix.title}" class="mix-image">
+                            <div class="play-overlay">
+                                <div class="play-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mix-info">
+                            <h3 class="mix-title">${mix.title}</h3>
+                            <p class="mix-artist">${mix.artist}</p>
+                            <div class="mix-duration">
+                                <i class="far fa-clock"></i>
+                                <span>${mix.duration}</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Add click event to play the mix
+                    mixCard.querySelector('.play-overlay').addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        playMix(index, true); // Pass true to auto-play
+                    });
+                    
+                    musicGrid.appendChild(mixCard);
+                });
+                
+                // Add coming soon placeholders
+                for (let i = 0; i < 2; i++) {
+                    const comingSoonCard = document.createElement('div');
+                    comingSoonCard.className = 'coming-soon-card';
+                    comingSoonCard.innerHTML = `
+                        <div class="coming-soon-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <p class="coming-soon-text">New Amapiano Mix<br>Coming Soon</p>
+                    `;
+                    musicGrid.appendChild(comingSoonCard);
+                }
+            }
+            
+            // Function to play a mix (with optional autoplay parameter)
+            function playMix(index, autoplay = false) {
+                if (index < 0 || index >= mixes.length) return;
+                
+                const mix = mixes[index];
+                currentSongIndex = index;
+                
+                // In a real implementation, you would set audio.src to the actual mix URL
+                // audio.src = mix.audioUrl;
+                
+                // For demo purposes, we'll just simulate it
+                console.log(`Playing: ${mix.title} - ${mix.artist}`);
+                
+                // Update player UI
+                const nowPlayingCover = document.getElementById('now-playing-cover');
+                if (nowPlayingCover) nowPlayingCover.src = mix.image;
+                
+                const nowPlayingTitle = document.getElementById('now-playing-title');
+                if (nowPlayingTitle) nowPlayingTitle.textContent = mix.title;
+                
+                const nowPlayingArtist = document.getElementById('now-playing-artist');
+                if (nowPlayingArtist) nowPlayingArtist.textContent = mix.artist;
+                
+                const durationEl = document.getElementById('duration');
+                if (durationEl) durationEl.textContent = mix.duration;
+
+                // Set up play promise for when user clicks play button
+                audio.onended = playNext;
+                
+                // Auto-play if requested
+                if (autoplay) {
+                    const playPromise = audio.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(_ => {
+                            isPlaying = true;
+                            const playIcon = document.getElementById('play-icon');
+                            if (playIcon) playIcon.classList.replace('fa-play', 'fa-pause');
+                            // Show progress dot when playing
+                            document.getElementById('progress-dot').style.display = 'block';
+                        })
+                        .catch(error => {
+                            console.log("Autoplay prevented - showing play button instead");
+                            // Show play button if autoplay fails
+                            isPlaying = false;
+                            const playIcon = document.getElementById('play-icon');
+                            if (playIcon) playIcon.classList.replace('fa-pause', 'fa-play');
+                            document.getElementById('progress-dot').style.display = 'none';
+                        });
+                    }
+                } else {
+                    // Just load the audio without playing
+                    audio.load();
+                    document.getElementById('progress-dot').style.display = 'none';
+                }
+            }
+
+            // Function to format time (seconds to MM:SS)
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            // Update progress bar and time
+            function updateProgress() {
+                if (audio.duration) {
+                    const progressPercent = (audio.currentTime / audio.duration) * 100;
+                    const progress = document.getElementById('progress');
+                    if (progress) progress.style.width = `${progressPercent}%`;
+                    
+                    // Position the progress dot
+                    const progressDot = document.getElementById('progress-dot');
+                    if (progressDot) {
+                        progressDot.style.left = `${progressPercent}%`;
+                    }
+                    
+                    const currentTimeEl = document.getElementById('current-time');
+                    if (currentTimeEl) currentTimeEl.textContent = formatTime(audio.currentTime);
+                }
+            }
+
+            // Set progress when clicked on progress bar
+            function setProgress(e) {
+                const progressBar = document.getElementById('progress-bar');
+                if (!progressBar) return;
+                
+                const width = progressBar.clientWidth;
+                const clickX = e.offsetX;
+                const duration = audio.duration;
+                audio.currentTime = (clickX / width) * duration;
+            }
+
+            // Toggle play/pause
+            function togglePlayPause() {
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        isPlaying = true;
+                        const playIcon = document.getElementById('play-icon');
+                        if (playIcon) playIcon.classList.replace('fa-play', 'fa-pause');
+                        document.getElementById('progress-dot').style.display = 'block';
+                    }).catch(error => {
+                        console.error("Playback failed:", error);
+                    });
+                } else {
+                    audio.pause();
+                    isPlaying = false;
+                    const playIcon = document.getElementById('play-icon');
+                    if (playIcon) playIcon.classList.replace('fa-pause', 'fa-play');
+                    document.getElementById('progress-dot').style.display = 'none';
+                }
+            }
+
+            // Play next mix
+            function playNext() {
+                const nextIndex = (currentSongIndex + 1) % mixes.length;
+                playMix(nextIndex, isPlaying); // Maintain play state
+            }
+
+            // Play previous mix
+            function playPrev() {
+                const prevIndex = (currentSongIndex - 1 + mixes.length) % mixes.length;
+                playMix(prevIndex, isPlaying); // Maintain play state
+            }
+
+            // Initialize player controls
+            function initPlayerControls() {
+                const playButton = document.getElementById('play-button');
+                if (playButton) {
+                    playButton.addEventListener('click', togglePlayPause);
+                }
+                
+                const prevButton = document.querySelector('.control-button.prev');
+                if (prevButton) {
+                    prevButton.addEventListener('click', playPrev);
+                }
+                
+                const nextButton = document.querySelector('.control-button.next');
+                if (nextButton) {
+                    nextButton.addEventListener('click', playNext);
+                }
+
+                const progressBar = document.getElementById('progress-bar');
+                if (progressBar) {
+                    progressBar.addEventListener('click', setProgress);
+                }
+
+                audio.addEventListener('timeupdate', updateProgress);
+                audio.addEventListener('play', function() {
+                    document.getElementById('progress-dot').style.display = 'block';
+                });
+                audio.addEventListener('pause', function() {
+                    document.getElementById('progress-dot').style.display = 'none';
+                });
+            }
+
+            // Initialize everything
+            function init() {
+                setupMixes();
+                initPlayerControls();
+                
+                // For demo purposes, set a default cover image
+                document.getElementById('now-playing-cover').src = "https://i.ytimg.com/vi/example1/maxresdefault.jpg";
+            }
+
+            // Start the application
+            init();
+        });
+    </script>
+</body>
+</html>
