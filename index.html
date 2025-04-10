@@ -788,16 +788,16 @@
                     {
                         title: "Kunye PTA III - Kabza De Small (Afro Set)",
                         artist: "Kabza De Small",
-                        audioUrl: "./kabza mix1.mp3", // Replace with actual URL
-                        image: "kabza mix1.jpg", // Replace with actual image
+                        audioUrl: "kabza_mix1.mp3", // File in same directory
+                        image: "kabza_mix1.jpg", // File in same directory
                         duration: "52:49",
                         isFeatured: true
                     },
                     {
                         title: "ASHMED HOUR NIGHT SESSIONS FT. KABZA DE SMALL - EP2",
                         artist: "Kabza De Small",
-                        audioUrl: "./kabza mix2.mp3", // Replace with actual URL
-                        image: "kabza mix2.jpg", // Replace with actual image
+                        audioUrl: "kabza_mix2.mp3", // File in same directory
+                        image: "kabza_mix2.jpg", // File in same directory
                         duration: "1:08:30",
                         isFeatured: true
                     }
@@ -839,7 +839,7 @@
                     // Add click event to play the mix
                     mixCard.querySelector('.play-overlay').addEventListener('click', function(e) {
                         e.stopPropagation();
-                        playMix(index, true); // Pass true to auto-play
+                        playMix(index, true);
                     });
                     
                     musicGrid.appendChild(mixCard);
@@ -859,18 +859,21 @@
                 }
             }
             
-            // Function to play a mix (with optional autoplay parameter)
+            // Function to play a mix
             function playMix(index, autoplay = false) {
                 if (index < 0 || index >= mixes.length) return;
                 
                 const mix = mixes[index];
                 currentSongIndex = index;
                 
-                // In a real implementation, you would set audio.src to the actual mix URL
-                // audio.src = mix.audioUrl;
+                // Set audio source
+                audio.src = mix.audioUrl;
                 
-                // For demo purposes, we'll just simulate it
-                console.log(`Playing: ${mix.title} - ${mix.artist}`);
+                // Add error handling
+                audio.onerror = function() {
+                    console.error("Error loading audio:", audio.error);
+                    alert("Error loading audio. Please check console for details.");
+                };
                 
                 // Update player UI
                 const nowPlayingCover = document.getElementById('now-playing-cover');
@@ -885,7 +888,7 @@
                 const durationEl = document.getElementById('duration');
                 if (durationEl) durationEl.textContent = mix.duration;
 
-                // Set up play promise for when user clicks play button
+                // Set up play promise
                 audio.onended = playNext;
                 
                 // Auto-play if requested
@@ -897,12 +900,11 @@
                             isPlaying = true;
                             const playIcon = document.getElementById('play-icon');
                             if (playIcon) playIcon.classList.replace('fa-play', 'fa-pause');
-                            // Show progress dot when playing
                             document.getElementById('progress-dot').style.display = 'block';
                         })
                         .catch(error => {
-                            console.log("Autoplay prevented - showing play button instead");
-                            // Show play button if autoplay fails
+                            console.log("Autoplay prevented:", error);
+                            // Show play button instead
                             isPlaying = false;
                             const playIcon = document.getElementById('play-icon');
                             if (playIcon) playIcon.classList.replace('fa-pause', 'fa-play');
@@ -910,7 +912,7 @@
                         });
                     }
                 } else {
-                    // Just load the audio without playing
+                    // Just load the audio
                     audio.load();
                     document.getElementById('progress-dot').style.display = 'none';
                 }
@@ -975,13 +977,13 @@
             // Play next mix
             function playNext() {
                 const nextIndex = (currentSongIndex + 1) % mixes.length;
-                playMix(nextIndex, isPlaying); // Maintain play state
+                playMix(nextIndex, isPlaying);
             }
 
             // Play previous mix
             function playPrev() {
                 const prevIndex = (currentSongIndex - 1 + mixes.length) % mixes.length;
-                playMix(prevIndex, isPlaying); // Maintain play state
+                playMix(prevIndex, isPlaying);
             }
 
             // Initialize player controls
@@ -1020,8 +1022,10 @@
                 setupMixes();
                 initPlayerControls();
                 
-                // For demo purposes, set a default cover image
-                document.getElementById('now-playing-cover').src = "https://i.ytimg.com/vi/example1/maxresdefault.jpg";
+                // Set default cover image
+                if (mixes.length > 0) {
+                    document.getElementById('now-playing-cover').src = mixes[0].image;
+                }
             }
 
             // Start the application
